@@ -112,11 +112,11 @@ window.addEventListener('load', function () {
 });
 
 // shape svgs
-// <svg height="100" width="100">
+// <svg width="100" height="100">
 //   <path class="circle" stroke="#f2ebd3" stroke-width="8" fill="none" d="M20,50a30,30 0 1,0 60,0a30,30 0 1,0 -60,0" />
 // </svg>
 
-// <svg height="100 " width="100 ">
-//   <path class="cross-1 " stroke="#545454 " stroke-width="8 " fill="none " d="M20,20L80,80 " />
-//   <path class="cross-2 " stroke="#545454 " stroke-width="8 " fill="none " d="M80,20L20,80 " />
+// <svg width="100" height="100">
+//   <path class="cross-one" stroke="#545454 " stroke-width="8 " fill="none " d="M20,20L80,80" />
+//   <path class="cross-two" stroke="#545454 " stroke-width="8 " fill="none " d="M80,20L20,80" />
 // </svg>

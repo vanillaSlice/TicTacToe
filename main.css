@@ -81,12 +81,15 @@ label:last-child {
   padding: 1rem;
   float: left;
   width: 48%;
+  margin-right: 4%;
   text-align: left;
   cursor: pointer;
+  -webkit-transition: border 0.2s linear;
+  transition: border 0.2s linear;
 }
 
-.player:first-child {
-  margin-right: 4%;
+.player:last-child {
+  margin-right: 0;
 }
 
 .player.has-turn {
@@ -107,6 +110,29 @@ label:last-child {
   text-align: right;
 }
 
+#message.animate {
+  -webkit-animation: fade-in 0.5s linear;
+  animation: fade-in 0.5s linear;
+}
+
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0
+  }
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0
+  }
+  to {
+    opacity: 1
+  }
+}
+
 #grid {
   position: relative;
 }
@@ -119,18 +145,27 @@ label:last-child {
   margin-left: auto;
   margin-right: auto;
   position: absolute;
+  border: 15rem solid #14bdac;
 }
 
-[data-animate='true'] #mask {
-  animation: 0.3s fadein linear;
+#mask.animate {
+  -webkit-animation: 0.3s fade-in-from-center;
+  animation: 0.3s fade-in-from-center;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
 }
 
-@keyframes fadein {
-  from {
-    border: 15rem solid #14bdac;
-  }
+@-webkit-keyframes fade-in-from-center {
   to {
     border: 0rem solid #14bdac;
+    visibility: hidden;
+  }
+}
+
+@keyframes fade-in-from-center {
+  to {
+    border: 0rem solid #14bdac;
+    visibility: hidden;
   }
 }
 
@@ -144,6 +179,7 @@ label:last-child {
   height: 10rem;
   float: left;
   border: 0.3rem solid #0da192;
+  cursor: pointer;
 }
 
 .cell:nth-child(1) {
@@ -160,6 +196,41 @@ label:last-child {
 
 .row:nth-child(4) .cell {
   border-bottom: none;
+}
+
+.circle,
+.cross-one,
+.cross-two {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  -webkit-animation: draw 1s linear forwards;
+  animation: draw 1s linear forwards;
+  -webkit-animation-delay: 5s;
+  animation-delay: 5s;
+}
+
+.circle {
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}
+
+.cross-two {
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+
+@-webkit-keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 
 button {
