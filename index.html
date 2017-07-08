@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Tic Tac Toe</title>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700">
+  <link rel="stylesheet" type="text/css" href="./reset.css">
+  <link rel="stylesheet" type="text/css" href="./main.css">
+</head>
+
+<body>
+
+  <main>
+    <h1>Tic Tac Toe</h1>
+    <div id="mode-buttons">
+      <form autocomplete="off">
+        <input type="radio" name="mode" id="easy" value="easy">
+        <label for="easy" tabindex="0">Easy</label>
+        <input type="radio" name="mode" id="medium" value="medium" checked>
+        <label for="medium" tabindex="0">Medium</label>
+        <input type="radio" name="mode" id="impossible" value="impossible">
+        <label for="impossible" tabindex="0">Impossible</label>
+        <input type="radio" name="mode" id="multiplayer" value="multiplayer">
+        <label for="multiplayer" tabindex="0">Multiplayer</label>
+      </form>
+    </div>
+    <div id="players">
+      <div class="player has-turn" id="player-x" tabindex="0">
+        <span class="symbol">​‌x</span>
+        <span class="score">-</span>
+      </div>
+      <div class="player" id="player-o" tabindex="0">
+        <span class="symbol">o</span>
+        <span class="score">-</span>
+      </div>
+    </div>
+    <div>
+      <p id="message">Start game or select player</p>
+    </div>
+    <div id="grid" data-animate="true">
+      <div id="mask"></div>
+      <div class="row">
+        <div class="cell" tabindex="0"></div>
+        <div class="cell" tabindex="0"></div>
+        <div class="cell" tabindex="0"></div>
+      </div>
+      <div class="row">
+        <div class="cell" tabindex="0"></div>
+        <div class="cell" tabindex="0"></div>
+        <div class="cell" tabindex="0"></div>
+      </div>
+      <div class="row">
+        <div class="cell" tabindex="0"></div>
+        <div class="cell" tabindex="0"></div>
+        <div class="cell" tabindex="0"></div>
+      </div>
+    </div>
+    <div>
+      <button type="button">RESTART GAME</button>
+    </div>
+
+  </main>
+
+  <script src="./main.js "></script>
+</body>
+
+</html>

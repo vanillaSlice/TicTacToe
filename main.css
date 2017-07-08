@@ -1,0 +1,182 @@
+/*
+ * COLOURS
+ *   java       - #14bdac
+ *   blue chill - #0da192
+ *   parchment  - #f2ebd3
+ *   emperor    - #545454
+ */
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: #14bdac;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 100%;
+  min-height: 100vh;
+  font-size: 1.6rem;
+  color: #f2ebd3;
+}
+
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+
+main {
+  margin: 2rem;
+  width: 50rem;
+}
+
+h1 {
+  font-size: 5.4rem;
+}
+
+main>div {
+  margin-top: 2rem;
+}
+
+div:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+input[name='mode'] {
+  display: none;
+}
+
+input[name='mode']:checked+label,
+label:hover,
+label:focus,
+.player {
+  background-color: #f2ebd3;
+  color: #14bdac;
+}
+
+label {
+  padding: 1rem 0;
+  float: left;
+  width: 22%;
+  margin-right: 4%;
+  cursor: pointer;
+}
+
+label:last-child {
+  margin-right: 0;
+}
+
+.player {
+  padding: 1rem;
+  float: left;
+  width: 48%;
+  text-align: left;
+  cursor: pointer;
+}
+
+.player:first-child {
+  margin-right: 4%;
+}
+
+.player.has-turn {
+  border-bottom: solid 0.5rem #0da192;
+}
+
+.player span {
+  float: left;
+  color: #0da192;
+}
+
+.symbol {
+  width: 20%;
+}
+
+.score {
+  width: 80%;
+  text-align: right;
+}
+
+#grid {
+  position: relative;
+}
+
+#mask {
+  width: 30rem;
+  height: 30rem;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+}
+
+[data-animate='true'] #mask {
+  animation: 0.3s fadein linear;
+}
+
+@keyframes fadein {
+  from {
+    border: 15rem solid #14bdac;
+  }
+  to {
+    border: 0rem solid #14bdac;
+  }
+}
+
+.row {
+  width: 30rem;
+  margin: 0 auto;
+}
+
+.cell {
+  width: 10rem;
+  height: 10rem;
+  float: left;
+  border: 0.3rem solid #0da192;
+}
+
+.cell:nth-child(1) {
+  border-left: none;
+}
+
+.row:nth-child(2) .cell {
+  border-top: none;
+}
+
+.cell:nth-child(3) {
+  border-right: none;
+}
+
+.row:nth-child(4) .cell {
+  border-bottom: none;
+}
+
+button {
+  border: none;
+  font-size: inherit;
+  background-color: #f2ebd3;
+  color: #14bdac;
+  cursor: pointer;
+  padding: 1rem;
+}
+
+
+/* Media queries */
+
+@media (max-width: 50em) {
+  label {
+    width: 100%;
+    margin-right: 0;
+  }
+}
