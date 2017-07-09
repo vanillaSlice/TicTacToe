@@ -7,10 +7,10 @@ window.addEventListener('load', function () {
    */
   var modeInputElements = document.querySelectorAll('#mode input'),
     playerElements = document.getElementById('players'),
-    playerXElement = document.getElementById('player-x'),
-    playerXScoreElement = document.querySelector('#player-x .score'),
-    playerOElement = document.getElementById('player-o'),
-    playerOScoreElement = document.querySelector('#player-o .score'),
+    playerXElement = playerElements.children[0],
+    playerXScoreElement = playerXElement.children[1],
+    playerOElement = playerElements.children[1],
+    playerOScoreElement = playerOElement.children[1],
     messageElement = document.getElementById('message'),
     gridElement = document.getElementById('grid'),
     maskElement = document.getElementById('mask'),
@@ -39,7 +39,6 @@ window.addEventListener('load', function () {
     playerO = Player('o'),
     playerWithTurn,
     grid,
-    movesMade,
     winningLines = [
       [0, 1, 2],
       [3, 4, 5],
@@ -79,7 +78,6 @@ window.addEventListener('load', function () {
     playerX.type = 'human';
     playerWithTurn = playerX;
     grid = ['', '', '', '', '', '', '', '', ''];
-    movesMade = 0;
     hasStarted = false;
     isGameOver = false;
 
@@ -90,7 +88,7 @@ window.addEventListener('load', function () {
     var newPlayerXElement = playerXElement.cloneNode(true);
     playerElements.replaceChild(newPlayerXElement, playerXElement);
     playerXElement = newPlayerXElement;
-    playerXScoreElement = document.querySelector('#player-x .score');
+    playerXScoreElement = playerXElement.children[1];
 
     // clear cells
     cellElements.forEach(function (element) {
@@ -120,35 +118,124 @@ window.addEventListener('load', function () {
     }
   }
 
-  // finish this method
   function computerMakeMove() {
-    setTimeout(function () {
-      var index = parseInt(Math.random() * 8);
-      while (grid[index] !== '') {
-        index = parseInt(Math.random() * 8);
+    var index = findBestMoveIndex();
+
+    if (mode === 'easy' || mode === 'medium') {
+      index = findBestMoveIndex();
+      var emptyCells = grid.reduce(function (acc, current, index) {
+        if (current === '') {
+          acc.push(index);
+        }
+        return acc;
+      }, []);
+
+      var offset = (mode === 'easy') ? 0.1 : 0.9;
+      if (Math.random() > offset) {
+        emptyCells.splice(emptyCells.indexOf(index), 1);
+        index = emptyCells[Math.floor(Math.random() * emptyCells.length)];
       }
+    }
+
+    setTimeout(function () {
       makeMove(index);
     }, 1000);
   }
 
-  // finish this method
+  function findBestMoveIndex() {
+    var bestMove = [-2];
+    var symbol = playerWithTurn.symbol;
+    grid.forEach(function (element, index) {
+      if (element === '') {
+        var val = minimax(index, symbol, symbol);
+        if (bestMove[0] < val) {
+          bestMove[0] = val;
+          bestMove[1] = index;
+        }
+      }
+    });
+    return bestMove[1];
+  }
+
+  function minimax(index, symbol, computerSymbol) {
+    var points,
+      nextSymbol;
+
+    // set the symbol
+    grid[index] = symbol;
+
+    if (isGameWon(symbol)) {
+      points = (symbol === computerSymbol) ? 1 : -1;
+    } else if (isGridFilled()) {
+      points = 0;
+    } else {
+      nextSymbol = (symbol === 'o') ? 'x' : 'o';
+      if (nextSymbol === computerSymbol) {
+        var max = -2;
+        grid.forEach(function (element, index) {
+          if (element === '') {
+            max = Math.max(max, minimax(index, nextSymbol, computerSymbol));
+          }
+        });
+        points = max;
+      } else {
+        var min = 2;
+        grid.forEach(function (element, index) {
+          if (element === '') {
+            min = Math.min(min, minimax(index, nextSymbol, computerSymbol));
+          }
+        });
+        points = min;
+      }
+    }
+
+    // clean up
+    grid[index] = '';
+
+    return points;
+  }
+
+  function isGameWon(symbol) {
+    for (var i = 0, length = winningLines.length; i < length; i++) {
+      var line = winningLines[i],
+        first = grid[line[0]],
+        second = grid[line[1]],
+        third = grid[line[2]];
+      if (first === symbol && first === second && second === third) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  function isGridFilled() {
+    for (var i = 0, length = grid.length; i < length; i++) {
+      if (grid[i] === '') {
+        return false;
+      }
+    }
+    return true;
+  }
+
   function makeMove(index) {
+    // 1. Check move is allowed
     if (!hasStarted || isGameOver || grid[index] !== '') {
       return;
     }
 
-    grid[index] = playerWithTurn.symbol;
-    cellElements[index].innerHTML =
-      (playerWithTurn.symbol === 'o') ? circleTemplate : crossTemplate;
-    movesMade++;
+    // 2. Make the move
+    var symbol = playerWithTurn.symbol;
+    grid[index] = symbol;
+    cellElements[index].innerHTML = (symbol === 'o') ? circleTemplate : crossTemplate;
 
-    if (checkIfWon()) {
+    // 3. Check if game is over, if not switch players
+    if (isGameWon(playerWithTurn.symbol)) {
       playerWithTurn.score++;
       playerXScoreElement.innerText = (playerX.score === 0) ? '-' : playerX.score;
       playerOScoreElement.innerText = (playerO.score === 0) ? '-' : playerO.score;
-      messageElement.innerHTML = '<p>' + playerWithTurn.symbol + ' wins</p>';
+      messageElement.innerHTML = '<p>' + symbol + ' wins</p>';
       isGameOver = true;
-    } else if (movesMade === 9) {
+    } else if (isGridFilled()) {
       messageElement.innerHTML = '<p>Draw</p>';
       isGameOver = true;
     } else {
@@ -162,19 +249,6 @@ window.addEventListener('load', function () {
     }
   }
 
-  function checkIfWon() {
-    for (var i = 0, length = winningLines.length; i < length; i++) {
-      var line = winningLines[i],
-        first = grid[line[0]],
-        second = grid[line[1]],
-        third = grid[line[2]];
-      if (first !== '' && first === second && second === third) {
-        return true;
-      }
-    }
-    return false;
-  }
-
   playerOElement.addEventListener('click', function () {
     if (!hasStarted) {
       playerX.type = 'computer';
@@ -185,6 +259,10 @@ window.addEventListener('load', function () {
 
   cellElements.forEach(function (element, index) {
     element.addEventListener('click', function () {
+      if (isGameOver) {
+        resetGame();
+        return;
+      }
       if (!hasStarted) {
         startGame();
       }
