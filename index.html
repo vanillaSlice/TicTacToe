@@ -15,50 +15,50 @@
 
   <main>
     <h1>Tic Tac Toe</h1>
-    <div id="mode-buttons">
+    <div id="mode">
       <form autocomplete="off">
         <input type="radio" name="mode" id="easy" value="easy">
-        <label for="easy" tabindex="0">Easy</label>
+        <label for="easy">Easy</label>
         <input type="radio" name="mode" id="medium" value="medium" checked>
-        <label for="medium" tabindex="0">Medium</label>
+        <label for="medium">Medium</label>
         <input type="radio" name="mode" id="impossible" value="impossible">
-        <label for="impossible" tabindex="0">Impossible</label>
+        <label for="impossible">Impossible</label>
         <input type="radio" name="mode" id="multiplayer" value="multiplayer">
-        <label for="multiplayer" tabindex="0">Multiplayer</label>
+        <label for="multiplayer">Multiplayer</label>
       </form>
     </div>
     <div id="players">
-      <div class="player has-turn" id="player-x" tabindex="0">
+      <div class="player has-turn" id="player-x">
         <span class="symbol">​‌x</span>
         <span class="score">-</span>
       </div>
-      <div class="player" id="player-o" tabindex="0">
+      <div class="player" id="player-o">
         <span class="symbol">o</span>
         <span class="score">-</span>
       </div>
     </div>
-    <div>
-      <p id="message" class="animate">Start game or select player</p>
+    <div id="message">
+      <p>Start game or select player</p>
     </div>
     <div id="grid">
-      <div id="mask" class="animate"></div>
+      <div id="mask"></div>
       <div class="row">
-        <div class="cell" tabindex="0"></div>
-        <div class="cell" tabindex="0"></div>
-        <div class="cell" tabindex="0"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
       </div>
       <div class="row">
-        <div class="cell" tabindex="0"></div>
-        <div class="cell" tabindex="0"></div>
-        <div class="cell" tabindex="0"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
       </div>
       <div class="row">
-        <div class="cell" tabindex="0"></div>
-        <div class="cell" tabindex="0"></div>
-        <div class="cell" tabindex="0"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
       </div>
     </div>
-    <div>
+    <div id="restart">
       <button type="button">RESTART GAME</button>
     </div>
 
