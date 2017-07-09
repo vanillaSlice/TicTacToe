@@ -65,11 +65,9 @@ window.addEventListener('load', function () {
    */
 
   modeInputElements.forEach(function (element) {
-    element.addEventListener('click', function () {
-      if (mode !== element.value) {
-        mode = element.value;
-        resetGame();
-      }
+    element.addEventListener('change', function () {
+      mode = element.value;
+      resetGame();
     });
   });
 
@@ -84,6 +82,7 @@ window.addEventListener('load', function () {
     // 2. Reset DOM elements
     playerOElement.classList.remove('has-turn');
     playerXElement.classList.add('has-turn');
+
     // replace player x element so border animation plays
     var newPlayerXElement = playerXElement.cloneNode(true);
     playerElements.replaceChild(newPlayerXElement, playerXElement);
@@ -122,7 +121,6 @@ window.addEventListener('load', function () {
     var index = findBestMoveIndex();
 
     if (mode === 'easy' || mode === 'medium') {
-      index = findBestMoveIndex();
       var emptyCells = grid.reduce(function (acc, current, index) {
         if (current === '') {
           acc.push(index);
@@ -130,8 +128,8 @@ window.addEventListener('load', function () {
         return acc;
       }, []);
 
-      var offset = (mode === 'easy') ? 0.1 : 0.9;
-      if (Math.random() > offset) {
+      var threshold = (mode === 'easy') ? 0.1 : 0.9;
+      if (Math.random() > threshold) {
         emptyCells.splice(emptyCells.indexOf(index), 1);
         index = emptyCells[Math.floor(Math.random() * emptyCells.length)];
       }
@@ -274,7 +272,10 @@ window.addEventListener('load', function () {
 
   restartButtonElement.addEventListener('click', resetGame);
 
-  // make sure we open page in a 'fresh' game state
-  resetGame();
+  function init() {
+    resetGame();
+  }
+
+  init();
 
 });
