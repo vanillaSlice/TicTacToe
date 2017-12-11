@@ -19,22 +19,21 @@
 </head>
 
 <body>
-
-  <main>
-    <h1>Tic Tac Toe</h1>
-    <div id="mode">
+  <main class="container">
+    <h1 class="heading">Tic Tac Toe</h1>
+    <div class="mode-btns clearfix">
       <form autocomplete="off">
-        <input type="radio" name="mode" id="easy" value="easy">
-        <label for="easy">Easy</label>
-        <input type="radio" name="mode" id="medium" value="medium" checked>
-        <label for="medium">Medium</label>
-        <input type="radio" name="mode" id="impossible" value="impossible">
-        <label for="impossible">Impossible</label>
-        <input type="radio" name="mode" id="multiplayer" value="multiplayer">
-        <label for="multiplayer">Multiplayer</label>
+        <input class="radio hidden" type="radio" name="mode" id="easy" value="easy">
+        <label class="btn" for="easy">Easy</label>
+        <input class="radio hidden" type="radio" name="mode" id="medium" value="medium" checked>
+        <label class="btn" for="medium">Medium</label>
+        <input class="radio hidden" type="radio" name="mode" id="impossible" value="impossible">
+        <label class="btn" for="impossible">Impossible</label>
+        <input class="radio hidden" type="radio" name="mode" id="multiplayer" value="multiplayer">
+        <label class="btn" for="multiplayer">Multiplayer</label>
       </form>
     </div>
-    <div id="players">
+    <div class="players clearfix">
       <div class="player has-turn">
         <span class="symbol">​‌x</span>
         <span class="score">-</span>
@@ -44,11 +43,11 @@
         <span class="score">-</span>
       </div>
     </div>
-    <div id="message">
-      <p>Start game or select player</p>
+    <div class="message">
+      <p class="text">Start game or select player</p>
     </div>
-    <div id="grid">
-      <div id="mask"></div>
+    <div class="grid clearfix">
+      <div class="mask"></div>
       <div class="row">
         <div class="cell"></div>
         <div class="cell"></div>
@@ -65,10 +64,9 @@
         <div class="cell"></div>
       </div>
     </div>
-    <div id="restart">
-      <button type="button">RESTART GAME</button>
+    <div>
+      <button class="btn restart-btn" type="button">Restart Game</button>
     </div>
-
   </main>
 
   <script src="./main.js "></script>

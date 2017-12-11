@@ -1,89 +1,120 @@
 /*
  * COLOURS
- *   java       - #14bdac
- *   blue chill - #0da192
- *   parchment  - #f2ebd3
- *   emperor    - #545454
+ *   Java       - #14bdac
+ *   Blue Chill - #0da192
+ *   Parchment  - #f2ebd3
+ *   Emperor    - #545454
+ */
+
+
+/*
+ * General styles.
  */
 
 html {
   font-size: 62.5%;
+  height: 100%;
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
   background: #14bdac;
+  color: #f2ebd3;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  text-align: center;
-  min-height: 100%;
-  min-height: 100vh;
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.6rem;
-  color: #f2ebd3;
+  height: 100%;
+  text-align: center;
 }
 
-* {
-  box-sizing: border-box;
-  outline: none;
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
-main {
-  margin: 2rem;
-  width: 50rem;
-}
 
-h1 {
-  font-size: 5.4rem;
-}
+/*
+ * Helpers.
+ */
 
-main>div {
-  margin-top: 2rem;
-}
-
-div:after {
+.clearfix::after {
+  clear: both;
   content: '';
   display: table;
-  clear: both;
 }
 
-input[name='mode'] {
+.hidden {
   display: none;
 }
 
-input[name='mode']:checked+label,
-label:hover,
-.player {
-  background-color: #f2ebd3;
-  color: #0da192;
+
+/*
+ * Specific styles.
+ */
+
+.container {
+  margin: auto;
+  padding: 2rem;
+  width: 54rem;
 }
 
-label {
-  padding: 1rem 0;
-  float: left;
-  width: 22%;
-  margin-right: 4%;
+.heading {
+  font-size: 5.4rem;
+  margin-bottom: 2rem;
+}
+
+.btn {
+  border: none;
   cursor: pointer;
+  font-size: inherit;
+  outline: none;
+  padding: 1rem 0;
 }
 
-label:last-child {
+.btn:hover,
+.radio:checked + .btn {
+  background-color: #f2ebd3;
+  color: #0da192; 
+}
+
+.mode-btns {
+  margin-bottom: 2rem;
+}
+
+.mode-btns .btn {
+  float: left;
+  margin-right: 4%;
+  width: 22%;
+}
+
+.mode-btns .btn:last-child {
   margin-right: 0;
 }
 
+@media (max-width: 50em) {
+  .mode-btns .btn {
+    margin-right: 0;
+    width: 100%;
+  }
+}
+
+.players {
+  margin-bottom: 2rem;
+}
+
 .player {
-  padding: 1rem;
-  float: left;
-  width: 48%;
-  margin-right: 4%;
-  text-align: left;
-  cursor: pointer;
+  background-color: #f2ebd3;
   border-bottom: solid 0.5rem #14bdac;
+  color: #0da192;
+  cursor: pointer;
+  float: left;
+  margin-right: 4%;
+  padding: 1rem;
+  text-align: left;
+  width: 48%;
 }
 
 .player:last-child {
@@ -92,7 +123,7 @@ label:last-child {
 
 .player.has-turn {
   -webkit-animation: add-border 0.5s linear forwards;
-  animation: add-border 0.5s linear forwards;
+          animation: add-border 0.5s linear forwards;
 }
 
 @-webkit-keyframes add-border {
@@ -107,58 +138,64 @@ label:last-child {
   }
 }
 
-.player span {
-  float: left;
+.player .symbol,
+.player .score {
   color: #0da192;
+  float: left;
 }
 
-.symbol {
+.player .symbol {
   width: 20%;
 }
 
-.score {
-  width: 80%;
+.player .score {
   text-align: right;
+  width: 80%;
 }
 
-#message p {
+.message {
+  margin-bottom: 2rem;
+}
+
+.message .text {
   -webkit-animation: fade-in 0.5s linear;
-  animation: fade-in 0.5s linear;
+          animation: fade-in 0.5s linear;
 }
 
 @-webkit-keyframes fade-in {
   from {
-    opacity: 0
+    opacity: 0;
   }
   to {
-    opacity: 1
+    opacity: 1;
   }
 }
 
 @keyframes fade-in {
   from {
-    opacity: 0
+    opacity: 0;
   }
   to {
-    opacity: 1
+    opacity: 1;
   }
 }
 
-#grid {
+.grid {
+  margin-bottom: 2rem;
   position: relative;
 }
 
-#mask {
-  width: 30rem;
+.grid .mask {
+  -webkit-animation: 0.3s fade-in-from-center forwards;
+          animation: 0.3s fade-in-from-center forwards;
+  border: 15rem solid #14bdac;
   height: 30rem;
   left: 0;
-  right: 0;
   margin-left: auto;
   margin-right: auto;
   position: absolute;
-  border: 15rem solid #14bdac;
-  -webkit-animation: 0.3s fade-in-from-center forwards;
-  animation: 0.3s fade-in-from-center forwards;
+  right: 0;
+  width: 30rem;
 }
 
 @-webkit-keyframes fade-in-from-center {
@@ -175,54 +212,54 @@ label:last-child {
   }
 }
 
-.row {
-  width: 30rem;
+.grid .row {
   margin: 0 auto;
+  width: 30rem;
 }
 
-.cell {
-  width: 10rem;
-  height: 10rem;
-  float: left;
+.grid .cell {
   border: 0.3rem solid #0da192;
   cursor: pointer;
+  float: left;
+  height: 10rem;
+  width: 10rem;
 }
 
-.cell:nth-child(1) {
+.grid .cell:nth-child(1) {
   border-left: none;
 }
 
-.row:nth-child(2) .cell {
+.grid .row:nth-child(2) .cell {
   border-top: none;
 }
 
-.cell:nth-child(3) {
+.grid .cell:nth-child(3) {
   border-right: none;
 }
 
-.row:nth-child(4) .cell {
+.grid .row:nth-child(4) .cell {
   border-bottom: none;
 }
 
-.circle,
-.cross-one,
-.cross-two {
+.grid .circle,
+.grid .cross-one,
+.grid .cross-two {
+  -webkit-animation: draw 1s linear forwards;
+          animation: draw 1s linear forwards;
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
-  -webkit-animation: draw 1s linear forwards;
-  animation: draw 1s linear forwards;
 }
 
-.circle {
+.grid .circle {
   -webkit-transform: rotate(90deg);
-  transform: rotate(90deg);
+          transform: rotate(90deg);
   -webkit-transform-origin: 50% 50%;
-  transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
 }
 
-.cross-two {
+.grid .cross-two {
   -webkit-animation-delay: 0.2s;
-  animation-delay: 0.2s;
+          animation-delay: 0.2s;
 }
 
 @-webkit-keyframes draw {
@@ -237,21 +274,9 @@ label:last-child {
   }
 }
 
-button {
-  border: none;
-  font-size: inherit;
+.restart-btn {
   background-color: #f2ebd3;
   color: #0da192;
-  cursor: pointer;
   padding: 1rem;
-}
-
-
-/* Media queries */
-
-@media (max-width: 50em) {
-  label {
-    width: 100%;
-    margin-right: 0;
-  }
+  text-transform: uppercase;
 }

@@ -5,17 +5,17 @@ window.addEventListener('load', function () {
   /*
    * DOM elements.
    */
-  var modeInputElements = document.querySelectorAll('#mode input'),
-    playerElements = document.getElementById('players'),
+  var modeInputElements = document.querySelectorAll('.mode-btns input'),
+    playerElements = document.querySelector('.players'),
     playerXElement = playerElements.children[0],
     playerXScoreElement = playerXElement.children[1],
     playerOElement = playerElements.children[1],
     playerOScoreElement = playerOElement.children[1],
-    messageElement = document.getElementById('message'),
-    gridElement = document.getElementById('grid'),
-    maskElement = document.getElementById('mask'),
+    messageElement = document.querySelector('.message'),
+    gridElement = document.querySelector('.grid'),
+    maskElement = document.querySelector('.mask'),
     cellElements = document.querySelectorAll('.cell'),
-    restartButtonElement = document.querySelector('#restart button');
+    restartButtonElement = document.querySelector('.restart-btn');
 
   /*
    * SVG templates.
@@ -105,13 +105,13 @@ window.addEventListener('load', function () {
       startGame();
     } else {
       playerO.type = 'computer';
-      messageElement.innerHTML = '<p>Start game or select player</p>';
+      messageElement.innerHTML = '<p class="text">Start game or select player</p>';
     }
   }
 
   function startGame() {
     hasStarted = true;
-    messageElement.innerHTML = '<p>x turn</p>';
+    messageElement.innerHTML = '<p class="text">x turn</p>';
     if (playerWithTurn.type === 'computer') {
       computerMakeMove();
     }
@@ -231,16 +231,16 @@ window.addEventListener('load', function () {
       playerWithTurn.score++;
       playerXScoreElement.innerText = (playerX.score === 0) ? '-' : playerX.score;
       playerOScoreElement.innerText = (playerO.score === 0) ? '-' : playerO.score;
-      messageElement.innerHTML = '<p>' + symbol + ' wins</p>';
+      messageElement.innerHTML = '<p class="text">' + symbol + ' wins</p>';
       isGameOver = true;
     } else if (isGridFilled()) {
-      messageElement.innerHTML = '<p>Draw</p>';
+      messageElement.innerHTML = '<p class="text">Draw</p>';
       isGameOver = true;
     } else {
       playerWithTurn = (playerWithTurn === playerX) ? playerO : playerX;
       playerXElement.classList.toggle('has-turn');
       playerOElement.classList.toggle('has-turn');
-      messageElement.innerHTML = '<p>' + playerWithTurn.symbol + ' turn</p>';
+      messageElement.innerHTML = '<p class="text">' + playerWithTurn.symbol + ' turn</p>';
       if (playerWithTurn.type === 'computer') {
         computerMakeMove();
       }
