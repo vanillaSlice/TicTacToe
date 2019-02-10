@@ -75,6 +75,12 @@ body {
   padding: 1rem 0;
 }
 
+.mode-btns .btn {
+  float: left;
+  margin-right: 4%;
+  width: 22%;
+}
+
 .btn:hover,
 .radio:checked + .btn {
   background-color: #f2ebd3;
@@ -83,12 +89,6 @@ body {
 
 .mode-btns {
   margin-bottom: 2rem;
-}
-
-.mode-btns .btn {
-  float: left;
-  margin-right: 4%;
-  width: 22%;
 }
 
 .mode-btns .btn:last-child {
@@ -230,12 +230,12 @@ body {
   border-left: none;
 }
 
-.grid .row:nth-child(2) .cell {
-  border-top: none;
-}
-
 .grid .cell:nth-child(3) {
   border-right: none;
+}
+
+.grid .row:nth-child(2) .cell {
+  border-top: none;
 }
 
 .grid .row:nth-child(4) .cell {
