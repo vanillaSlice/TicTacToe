@@ -4,28 +4,29 @@
  * DOM Elements
  */
 
-const modeInputElements = document.querySelectorAll('.mode-btns .radio');
-const playersElement = document.querySelector('.players');
-let playerXElement = document.querySelector('.player-x');
-let playerXScoreElement = document.querySelector('.player-x .score');
-const playerOElement = document.querySelector('.player-o');
-const playerOScoreElement = document.querySelector('.player-o .score');
-const messageElement = document.querySelector('.message');
-const gridElement = document.querySelector('.grid');
-let maskElement = document.querySelector('.grid .mask');
-const cellElements = document.querySelectorAll('.grid .cell');
-const restartButtonElement = document.querySelector('.restart-btn');
+const modeInputElements = document.querySelectorAll('.js-mode-input');
+const playersElement = document.querySelector('.js-players');
+let playerXElement = document.querySelector('.js-player-x');
+let playerXScoreElement = document.querySelector('.js-player-x-score');
+const playerOElement = document.querySelector('.js-player-o');
+const playerOScoreElement = document.querySelector('.js-player-o-score');
+const messageElement = document.querySelector('.js-message');
+const gridElement = document.querySelector('.js-grid');
+let maskElement = document.querySelector('.js-grid-mask');
+const cellElements = document.querySelectorAll('.js-cell');
+const restartButtonElement = document.querySelector('.js-restart-btn');
 
 /*
  * SVG Templates
  */
 
-const crossTemplate = '<svg width="100" height="100">'
-  + '<path class="cross-one" stroke="#545454" stroke-width="8" fill="none" d="M20,20L80,80" />'
-  + '<path class="cross-two" stroke="#545454" stroke-width="8" fill="none" d="M80,20L20,80" />'
+const crossTemplate = '<svg width="94" height="94">'
+  + '<path class="cross-one" stroke="#545454" stroke-width="8" fill="none" d="M17,17L77,77" />'
+  + '<path class="cross-two" stroke="#545454" stroke-width="8" fill="none" d="M77,17L17,77" />'
   + '</svg>';
-const circleTemplate = '<svg width="100" height="100">'
-  + '<path class="circle" stroke="#f2ebd3" stroke-width="8" fill="none" d="M20,50a30,30 0 1,0 60,0a30,30 0 1,0 -60,0" />'
+
+const circleTemplate = '<svg width="94" height="94">'
+  + '<path class="circle" stroke="#f2ebd3" stroke-width="8" fill="none" d="M 17 47 c 0 16.569, 13.431 30, 30 30 s 30 -13.431, 30 -30 s -13.431 -30, -30 -30 s -30 13.431, -30 30 z" />'
   + '</svg>';
 
 /*

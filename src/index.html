@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Tic Tac Toe</title>
+  <title>Tic-Tac-Toe</title>
   <meta name="description" content="Advanced Front End Development Project for FreeCodeCamp">
   <link rel="icon" type="image/x-icon" href="./favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
@@ -25,52 +25,52 @@
 
 <body>
   <main class="container">
-    <h1 class="heading">Tic Tac Toe</h1>
+    <h1 class="heading">Tic-Tac-Toe</h1>
     <div class="mode-btns clearfix">
       <form autocomplete="off">
-        <input class="radio hidden" type="radio" name="mode" id="easy" value="easy">
+        <input class="radio hidden js-mode-input" type="radio" name="mode" id="easy" value="easy">
         <label class="btn" for="easy">Easy</label>
-        <input class="radio hidden" type="radio" name="mode" id="medium" value="medium" checked>
+        <input class="radio hidden js-mode-input" type="radio" name="mode" id="medium" value="medium" checked>
         <label class="btn" for="medium">Medium</label>
-        <input class="radio hidden" type="radio" name="mode" id="impossible" value="impossible">
+        <input class="radio hidden js-mode-input" type="radio" name="mode" id="impossible" value="impossible">
         <label class="btn" for="impossible">Impossible</label>
-        <input class="radio hidden" type="radio" name="mode" id="multiplayer" value="multiplayer">
+        <input class="radio hidden js-mode-input" type="radio" name="mode" id="multiplayer" value="multiplayer">
         <label class="btn" for="multiplayer">Multiplayer</label>
       </form>
     </div>
-    <div class="players clearfix">
-      <div class="player player-x has-turn">
+    <div class="players clearfix js-players">
+      <div class="player has-turn js-player-x">
         <span class="symbol">​‌x</span>
-        <span class="score">-</span>
+        <span class="score js-player-x-score">-</span>
       </div>
-      <div class="player player-o">
+      <div class="player js-player-o">
         <span class="symbol">o</span>
-        <span class="score">-</span>
+        <span class="score js-player-o-score">-</span>
       </div>
     </div>
-    <div class="message">
+    <div class="message js-message">
       <p class="text">Start game or select player</p>
     </div>
-    <div class="grid clearfix">
-      <div class="mask"></div>
+    <div class="grid clearfix js-grid">
+      <div class="mask js-grid-mask"></div>
       <div class="row">
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
+        <div class="cell js-cell"></div>
+        <div class="cell js-cell"></div>
+        <div class="cell js-cell"></div>
       </div>
       <div class="row">
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
+        <div class="cell js-cell"></div>
+        <div class="cell js-cell"></div>
+        <div class="cell js-cell"></div>
       </div>
       <div class="row">
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
+        <div class="cell js-cell"></div>
+        <div class="cell js-cell"></div>
+        <div class="cell js-cell"></div>
       </div>
     </div>
     <div>
-      <button class="btn restart-btn" type="button">Restart Game</button>
+      <button class="btn restart-btn js-restart-btn" type="button">Restart Game</button>
     </div>
   </main>
 

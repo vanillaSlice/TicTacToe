@@ -1,15 +1,37 @@
-/*
- * COLOURS
- *   Java       - #14bdac
- *   Blue Chill - #0da192
- *   Parchment  - #f2ebd3
- *   Emperor    - #545454
- */
+@keyframes add-border {
+  to {
+    border-bottom-color: #0da192;
+  }
+}
 
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
 
-/*
- * General styles.
- */
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-from-center {
+  to {
+    border: 0rem solid #14bdac;
+    visibility: hidden;
+  }
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 html {
   font-size: 62.5%;
@@ -20,26 +42,12 @@ html {
 body {
   background: #14bdac;
   color: #f2ebd3;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   font-family: 'Open Sans', sans-serif;
   font-size: 1.6rem;
   height: 100%;
   text-align: center;
 }
-
-*,
-*::before,
-*::after {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-
-/*
- * Helpers.
- */
 
 .clearfix::after {
   clear: both;
@@ -51,10 +59,18 @@ body {
   display: none;
 }
 
+.btn {
+  border: none;
+  cursor: pointer;
+  font-size: inherit;
+  outline: none;
+  padding: 1rem 0;
+}
 
-/*
- * Specific styles.
- */
+.btn:hover {
+  background-color: #f2ebd3;
+  color: #0da192;
+}
 
 .container {
   margin: auto;
@@ -67,12 +83,8 @@ body {
   margin-bottom: 2rem;
 }
 
-.btn {
-  border: none;
-  cursor: pointer;
-  font-size: inherit;
-  outline: none;
-  padding: 1rem 0;
+.mode-btns {
+  margin-bottom: 2rem;
 }
 
 .mode-btns .btn {
@@ -81,25 +93,13 @@ body {
   width: 22%;
 }
 
-.btn:hover,
-.radio:checked + .btn {
-  background-color: #f2ebd3;
-  color: #0da192; 
-}
-
-.mode-btns {
-  margin-bottom: 2rem;
-}
-
 .mode-btns .btn:last-child {
   margin-right: 0;
 }
 
-@media (max-width: 50em) {
-  .mode-btns .btn {
-    margin-right: 0;
-    width: 100%;
-  }
+.mode-btns .radio:checked+.btn {
+  background-color: #f2ebd3;
+  color: #0da192;
 }
 
 .players {
@@ -123,20 +123,7 @@ body {
 }
 
 .player.has-turn {
-  -webkit-animation: add-border 0.5s linear forwards;
-          animation: add-border 0.5s linear forwards;
-}
-
-@-webkit-keyframes add-border {
-  to {
-    border-bottom-color: #0da192;
-  }
-}
-
-@keyframes add-border {
-  to {
-    border-bottom-color: #0da192;
-  }
+  animation: add-border 0.5s linear forwards;
 }
 
 .player .symbol,
@@ -159,26 +146,7 @@ body {
 }
 
 .message .text {
-  -webkit-animation: fade-in 0.5s linear;
-          animation: fade-in 0.5s linear;
-}
-
-@-webkit-keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  animation: fade-in 0.5s linear;
 }
 
 .grid {
@@ -187,8 +155,7 @@ body {
 }
 
 .grid .mask {
-  -webkit-animation: 0.3s fade-in-from-center forwards;
-          animation: 0.3s fade-in-from-center forwards;
+  animation: 0.3s fade-in-from-center forwards;
   border: 15rem solid #14bdac;
   height: 30rem;
   left: 0;
@@ -199,21 +166,8 @@ body {
   width: 30rem;
 }
 
-@-webkit-keyframes fade-in-from-center {
-  to {
-    border: 0rem solid #14bdac;
-    visibility: hidden;
-  }
-}
-
-@keyframes fade-in-from-center {
-  to {
-    border: 0rem solid #14bdac;
-    visibility: hidden;
-  }
-}
-
 .grid .row {
+  height: 10rem;
   margin: 0 auto;
   width: 30rem;
 }
@@ -227,52 +181,31 @@ body {
 }
 
 .grid .cell:nth-child(1) {
-  border-left: none;
+  border-left-color: transparent;
 }
 
 .grid .cell:nth-child(3) {
-  border-right: none;
+  border-right-color: transparent;
 }
 
 .grid .row:nth-child(2) .cell {
-  border-top: none;
+  border-top-color: transparent;
 }
 
 .grid .row:nth-child(4) .cell {
-  border-bottom: none;
+  border-bottom-color: transparent;
 }
 
 .grid .circle,
 .grid .cross-one,
 .grid .cross-two {
-  -webkit-animation: draw 1s linear forwards;
-          animation: draw 1s linear forwards;
+  animation: draw 1s linear forwards;
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
 }
 
-.grid .circle {
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
-  -webkit-transform-origin: 50% 50%;
-          transform-origin: 50% 50%;
-}
-
 .grid .cross-two {
-  -webkit-animation-delay: 0.2s;
-          animation-delay: 0.2s;
-}
-
-@-webkit-keyframes draw {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes draw {
-  to {
-    stroke-dashoffset: 0;
-  }
+  animation-delay: 0.2s;
 }
 
 .restart-btn {
@@ -280,4 +213,11 @@ body {
   color: #0da192;
   padding: 1rem;
   text-transform: uppercase;
+}
+
+@media (max-width: 50em) {
+  .mode-btns .btn {
+    margin-right: 0;
+    width: 100%;
+  }
 }
