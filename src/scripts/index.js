@@ -157,7 +157,7 @@ function computerMakeMove() {
     }, []);
 
     const threshold = mode === 'easy' ? 0.1 : 0.9;
-    if (Math.random() > threshold) {
+    if (Math.random() > threshold && emptyCells.length > 1) {
       emptyCells.splice(emptyCells.indexOf(index), 1);
       index = emptyCells[Math.floor(Math.random() * emptyCells.length)];
     }
