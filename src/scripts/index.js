@@ -24,7 +24,7 @@ const crossTemplate = '<svg width="94" height="94">'
   + '</svg>';
 
 const circleTemplate = '<svg width="94" height="94">'
-  + '<path class="circle" stroke="#f2ebd3" stroke-width="8" fill="none" d="M17,47c0,16.569,13.431,30,30,30,s30,-13.431,30-30s-13.431,-30,-30,-30s-30,13.431,-30,30z" />'
+  + '<path class="circle" stroke="#f2ebd3" stroke-width="8" fill="none" d="M17,47c0,16.569,13.431,30,30,30s30,-13.431,30-30s-13.431,-30,-30,-30s-30,13.431,-30,30z" />'
   + '</svg>';
 
 /*
