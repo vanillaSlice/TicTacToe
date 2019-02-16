@@ -238,8 +238,8 @@ function makeMove(index) {
 
   if (isWinner(playerWithTurn.symbol)) {
     playerWithTurn.score += 1;
-    playerXScoreElement.innerText = (playerX.score === 0) ? '-' : playerX.score;
-    playerOScoreElement.innerText = (playerO.score === 0) ? '-' : playerO.score;
+    playerXScoreElement.innerText = playerX.score === 0 ? '-' : playerX.score;
+    playerOScoreElement.innerText = playerO.score === 0 ? '-' : playerO.score;
     setMessage(`${symbol} wins`);
     isGameOver = true;
     return;
@@ -251,7 +251,7 @@ function makeMove(index) {
     return;
   }
 
-  playerWithTurn = (playerWithTurn === playerX) ? playerO : playerX;
+  playerWithTurn = playerWithTurn === playerX ? playerO : playerX;
   highlightPlayerElementWithTurn();
   setMessage(`${playerWithTurn.symbol} turn`);
 
