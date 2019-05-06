@@ -6,7 +6,7 @@
 
 *Advanced Front End Development Project for FreeCodeCamp.*
 
-A deployed version can be viewed [here](https://vanillaslice.github.io/TicTacToe/).
+A deployed version can be viewed [here](https://tictactoe.mikelowe.xyz/).
 
 ## Screenshot
 
