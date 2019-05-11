@@ -1,3 +1,5 @@
+import { version } from '../../package.json';
+
 /*
  * DOM Elements
  */
@@ -13,6 +15,7 @@ const gridElement = document.querySelector('.js-grid');
 let gridMaskElement = document.querySelector('.js-grid-mask');
 const cellElements = document.querySelectorAll('.js-cell');
 const restartBtnElement = document.querySelector('.js-restart-btn');
+const versionElement = document.querySelector('.js-version');
 
 /*
  * SVG Templates
@@ -300,6 +303,7 @@ function handleCellElementClick(index) {
  * Initialise
  */
 
+versionElement.innerText = version;
 modeInputElements.forEach(e => e.addEventListener('change', handleModeChange));
 playerOElement.addEventListener('click', handlePlayerOElementClick);
 cellElements.forEach((e, i) => e.addEventListener('click', handleCellElementClick(i)));

@@ -49,6 +49,12 @@ body {
   text-align: center;
 }
 
+a {
+  color: #f2ebd3;
+  outline: none;
+  text-decoration: underline;
+}
+
 .clearfix::after {
   clear: both;
   content: '';
@@ -213,6 +219,13 @@ body {
   color: #0da192;
   padding: 1rem;
   text-transform: uppercase;
+}
+
+.footer {
+  display: flex;
+  font-size: 1.2rem;
+  justify-content: space-between;
+  margin-top: 2rem;
 }
 
 @media (max-width: 50em) {
