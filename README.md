@@ -1,7 +1,7 @@
 # Tic-Tac-Toe
 
 [![Latest Release](https://img.shields.io/github/release/vanillaSlice/TicTacToe.svg)](https://github.com/vanillaSlice/TicTacToe/releases/latest)
-[![Build Status](https://img.shields.io/travis/vanillaSlice/TicTacToe/master.svg)](https://travis-ci.org/vanillaSlice/TicTacToe)
+[![Build Status](https://img.shields.io/travis/com/vanillaSlice/TicTacToe/master.svg)](https://travis-ci.com/vanillaSlice/TicTacToe)
 [![License](https://img.shields.io/github/license/vanillaSlice/TicTacToe.svg)](LICENSE)
 
 *Advanced Front End Development Project for FreeCodeCamp.*
